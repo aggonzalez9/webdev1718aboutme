@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <style>
+      
+      .border1 { border-style: groove; 
+          border-color: #ff69b4; 
+           margin: 5px 5px 5px 5px; 
+            border-radius: 20px;}
+        .font { font-family:"Serif", Monospace;}
+    </style>
+    <head>
+           <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+          $(document).ready(function(){
+    $("button.btn").click(function(){
+        $("div.animate").animate({
+          left: '250px',
+            opacity: '1.0',
+            height: '150px',
+            width: '150px',
+        });
+    });
+});
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+        </script>
+    </head>
+    <title>Animals</title>
+    <body class="font" style="background-color: grey"> 
+    
+    <h1><center>All About Animals</center></h1>
+          <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">All About Alan</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="about_alan1.html">Home</a></li>
+      <li><a href="animals1.html">Animals</a></li>
+      <li><a href="run1.html">Running</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div class="container">
+   
+  <div id="myCarousel" class="carousel slide, border1" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <center><div class="carousel-inner">
+      <div class="item active">
+        <img src="http://aqualandpetsplus.com/Animal484.jpg" alt="Sugar Glider" style="width:50%;" border-radius="20px">
+      </div>
+
+      <div class="item">
+        <img src="http://listverse.wpengine.netdna-cdn.com/wp-content/uploads/2011/03/philippine-cobra.jpg" alt="Snake" style="width:50%;" border-radius="20px">
+      </div>
+    
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div></center>
+  <br><center>
+    <button id="hide" class="btn-danger">Hide Text</button>
+    <button id="show" class="btn-danger">Show Text</button>
+  <p>
+      <br>Animals are very interesting.
+      There is many different types of animals that all have different behaviors.
+      They can be dangerous or very peaceful.
+      <a href="https://www.elitereaders.com/weird-animal-defense-mechanism/"> Many have defenses to protect them from people or other animals.</a>
+      They sometimes have poison defenses such as poisonous to eat or they have a poisonous bite.</p>
+      <p>
+    Learning about animals can be very useful for many reasons.
+    If you plan to be a biologist knowing about animals is very important. 
+    Knowing about animals if you venture in nature is also very important. 
+    You can know which animals are dangerous so that you steer away from them.
+    You can also know where certain animals appear to view them.
+    If you plan on getting a pet knowing about animals is also very important.</p>
+    <button class="btn ">Make this picture smaller</button>
+  <div class="animate"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Jaguar.jpg/1200px-Jaguar.jpg" class="img-circle" style="width:25%"></div>
+    </center>
+    </body>
+</html>

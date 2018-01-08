@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Failed food inspections in Chicago</h1>
+      <p>Click the botton below to view a list of the food inspections</p>
+      <button id="failBtn">Failed</button>
+      <button id="passBtn">Passed</button>
+    </div>
+    <div id="map"></div>
+    <div id="data">
+
+    </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(41.8781,-87.6298),
+          mapTypeId: 'terrain'
+        });
+      }
+      
+      $(document).ready(function() {
+        $.ajax({
+          url:"https://data.cityofchicago.org/resource/cwig-ma7x.json",
+          success: function(result) {
+            console.log(result);
+            console.log("data pulled")
+            
+            for (var i=0; i<result.length; i++){
+              if (result[i]['location'] !== undefined){
+              if (result[i]['results'] == "Fail"){
+                var coords = result[i]['location']['coordinates'];
+                var latLng = new google.maps.LatLng(coords[1],coords[0]);
+                var marker = new google.maps.Marker({
+                  position: latLng,
+                  map: map
+                });
+              }  
+            }
+            }
+                $("#failBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Fail") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }   
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+                
+                $("#passBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Pass") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }  
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+
+          }
+        });
+      });
+      
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARMb63j3mHzCxvQfDRWmrtdj6OSe9uw1k&callback=initMap">
+    </script>
+  </body>
+</html><!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Failed food inspections in Chicago</h1>
+      <p>Click the botton below to view a list of the food inspections</p>
+      <button id="failBtn">Failed</button>
+      <button id="passBtn">Passed</button>
+    </div>
+    <div id="map"></div>
+    <div id="data">
+
+    </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(41.8781,-87.6298),
+          mapTypeId: 'terrain'
+        });
+      }
+      
+      $(document).ready(function() {
+        $.ajax({
+          url:"https://data.cityofchicago.org/resource/cwig-ma7x.json",
+          success: function(result) {
+            console.log(result);
+            console.log("data pulled")
+            
+            for (var i=0; i<result.length; i++){
+              if (result[i]['location'] !== undefined){
+              if (result[i]['results'] == "Fail"){
+                var coords = result[i]['location']['coordinates'];
+                var latLng = new google.maps.LatLng(coords[1],coords[0]);
+                var marker = new google.maps.Marker({
+                  position: latLng,
+                  map: map
+                });
+              }  
+            }
+            }
+                $("#failBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Fail") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }   
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+                
+                $("#passBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Pass") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }  
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+
+          }
+        });
+      });
+      
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARMb63j3mHzCxvQfDRWmrtdj6OSe9uw1k&callback=initMap">
+    </script>
+  </body>
+</html><!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Failed food inspections in Chicago</h1>
+      <p>Click the botton below to view a list of the food inspections</p>
+      <button id="failBtn">Failed</button>
+      <button id="passBtn">Passed</button>
+    </div>
+    <div id="map"></div>
+    <div id="data">
+
+    </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(41.8781,-87.6298),
+          mapTypeId: 'terrain'
+        });
+      }
+      
+      $(document).ready(function() {
+        $.ajax({
+          url:"https://data.cityofchicago.org/resource/cwig-ma7x.json",
+          success: function(result) {
+            console.log(result);
+            console.log("data pulled")
+            
+            for (var i=0; i<result.length; i++){
+              if (result[i]['location'] !== undefined){
+              if (result[i]['results'] == "Fail"){
+                var coords = result[i]['location']['coordinates'];
+                var latLng = new google.maps.LatLng(coords[1],coords[0]);
+                var marker = new google.maps.Marker({
+                  position: latLng,
+                  map: map
+                });
+              }  
+            }
+            }
+                $("#failBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Fail") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }   
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+                
+                $("#passBtn").click(function(){
+                
+                        $.getJSON("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+                    .done(function(data){
+                            $.each(data, function(index, value){
+                            if ((value.results == "Pass") && (value.facility_type != "undefined"))
+                                {
+                              var html = "<div><h1>" + value.dba_name + "</h1>" +
+                                            "<p class='panel-body'><strong>Facility Type:</strong> " + value.facility_type + "<br>" +
+                                            "<strong>Address:</strong> " + value.address + "<br>" +
+                                            "<strong>Risk Level:</strong> " + value.risk + "<br>" +
+                                            "<strong>Violations:</strong> <small><small>" + value.violations + "</small></small><br>" +
+                                            "</p>" +
+                                            "</div>";
+                                }  
+                            $("body").append(html);
+                            });
+                    });
+                
+                });
+
+          }
+        });
+      });
+      
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARMb63j3mHzCxvQfDRWmrtdj6OSe9uw1k&callback=initMap">
+    </script>
+  </body>
+</html>s
