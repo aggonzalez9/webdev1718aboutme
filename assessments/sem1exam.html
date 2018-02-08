@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <style>
+     .border1 { border-style: groove; 
+          border-color: #ff69b4; 
+           margin: 5px 5px 5px 5px; 
+            border-radius: 20px;}
+        .color { background-color: #00bcd4;}
+    </style>
+    <head>
+            <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    <body class="color">
+    <h1 background-color="#006aa8"><u>Alan Gonzalez</u></h1>
+    <h3 background-color="#0277bb"><i>Class Period 1</i></h3>
+    <hr>
+    <img src="http://www.jessmountifield.co.uk/wp-content/uploads/2015/07/White-Fang.jpg" style="float:left;width:150px;height:250px;">
+    <br><p>This book is very interesting and exciting with vivid details. It comes from the point of view of a wolf that was tamed and then used as a work dog. It tells a great story and is very interesting all throughout.</p>
+    <br>
+    <br><br><br><br><br><br><br>
+    <hr>
+    <center><button type="button"><a href="https://preview.c9users.io/aggonzalez9/webdev1718aboutme/about_alan.html?_c9_id=livepreview12&_c9_host=https://ide.c9.io">About me</a></button></center>
+    <br>
+    
+    <center>
+    <div class="card-3 text-center" style="width: 30rem;">
+  <img class="card-img-top" src="http://www.chasedirect.co.uk/music-news/images/Foo-Fighters-frontman-an-Adele-fan_16000788_801261784_1_0_7047576_300.jpg" alt="Card image cap">
+  <div class="card-block">
+      
+    <h4 class="card-title">Dave Grohl</h4>
+    <p class="card-text">Dave Grohl is the singer for the band Foo Fighetrs. I really enjoy their music it is very relaxing. I use the music to help get me excited for swim meets and other big events. I especially love their new song Run.</p>
+    <a href="https://en.wikipedia.org/wiki/Dave_Grohl" class="btn btn-primary">More Information</a>
+  </div>
+</div></center>
+<br>
+<div id="myCarousel" class="carousel slide, border1" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <center><div class="carousel-inner">
+      <div class="item active">
+        <img src="https://pics.me.me/money-cant-buy-happiness-but-it-can-buy-you-a-3626292.png" alt="Penguin" style="width:50%;" border-radius="20px">
+        <p>Penguin Memes</p>
+      </div>
+
+      <div class="item">
+        <img src="https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg" alt="Turtle" style="width:50%;" border-radius="20px">
+        <p>Turtles get hungry too</p>
+      </div>
+    
+      <div class="item">
+        <img src="http://sugarglidercare.org/wp-content/uploads/2010/08/sugar-glider-21.jpg" alt="Sugar Glider" style="width:50%;" border-radius="20px">
+        <p>The adorable sugar glider.</p>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div></center>
+<hr>
+<!----
+<head><script>
+
+ $.ajax({
+          url:" https://data.cityofchicago.org/resource/tt4n-kn4t.json",
+          success: function(result) {
+            console.log(result);
+            console.log("data pulled");
+    }})       
+     var data = new google.visualization.DataTable();
+            data.addColumn('string', 'department');
+            data.addColumn('number', 'annual_salary');
+     for (var i=0; i<info.length; i++){
+              if (info[i]['annual_salary'] !== 0){
+                if (info[i]['department'] !== undefined){
+                  data.addRows([
+                    [info[i]['department'], ((info[i]['annual_salary']))]
+                  ]);
+                }
+              }
+            }
+  </script> </head>  </body>
+    
+</html>

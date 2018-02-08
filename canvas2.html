@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+    <body> 
+
+        <canvas id="myCanvas " width="450" height="450"
+style="border:5px solid #c3c3c3;">
+</canvas>
+        
+        
+        
+    
+    <script>
+    
+   
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var canvasWidth = ctx.width;
+var canvasHeight = ctx.height;
+var angle = 0;
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "aqua";
+//Circle
+function drawCircle() {
+ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+ctx.beginPath();
+var radius = 150;
+ctx.arc(225, 225, radius, 0, 2*Math.PI, false);
+ctx.closePath();
+var radius = 25 + 150 * Math.abs(Math.cos(angle));
+ctx.stroke();
+ctx.fill();
+angle += Math.PI / 64;
+requestAnimationFrame(drawCircle);
+}
+drawCircle();
+//A
+ctx.moveTo(150,150);
+ctx.lineTo(175,225);
+ctx.stroke();
+ctx.moveTo(150,150);
+ctx.lineTo(125,225);
+ctx.stroke();
+ctx.moveTo(163.5,190.5);
+ctx.lineTo(137.5,190.5);
+ctx.stroke();
+//G
+ctx.moveTo(250,225);
+ctx.lineTo(200,225);
+ctx.stroke();
+ctx.moveTo(250,150);
+ctx.lineTo(200,150);
+ctx.stroke();
+ctx.moveTo(200,150);
+ctx.lineTo(200,225);
+ctx.stroke();
+ctx.moveTo(250,190);
+ctx.lineTo(250,225);
+ctx.stroke();
+ctx.moveTo(250,190);
+ctx.lineTo(225,190);
+ctx.stroke();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

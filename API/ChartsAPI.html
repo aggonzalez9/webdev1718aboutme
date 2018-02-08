@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+        var info;
+        var max = 26155;//largest data value
+        $.ajax({
+          url:"https://data.cityofchicago.org/resource/suj7-cg3j.json?$select=vehicle_make_model,COUNT(vehicle_make_model)&$group=vehicle_make_model",
+          success: function(result) {
+            console.log(result);
+            console.log("data pulled");
+            info = result;
+            
+            
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'vehicle_make_model');
+            data.addColumn('number', 'COUNT_vehicle_make_model');
+            
+            for (var i=0; i<info.length; i++){
+              if (info[i]['COUNT_vehicle_make_model'] !== 0){
+                if (info[i]['vehicle_make_model'] !== undefined){
+                  data.addRows([
+                    [info[i]['vehicle_make_model'], ((info[i]['COUNT_vehicle_make_model'])/max)]
+                  ]);
+                }
+              }
+            }
+            
+            // Set chart options
+            var options = { title:'Abandoned Vehicle Requests',
+            is3D: true };
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        });
+        
+
+
+      }
+    
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" style="width:100%;height:100%"></div>
+  </body>
+</html>
