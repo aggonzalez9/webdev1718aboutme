@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <canvas id="myCanvas" width="450" height="450"
+style="border:5px solid #c3c3c3;">
+</canvas>
+
+      <img id="sunglasses" width="0" height="0" src="http://moziru.com/images/spectacles-clipart-wayfarer-sunglasses-8.png" alt="The Scream">
+
+        
+    
+    <script>
+    
+    window.onload = function() {
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var x = 20;
+var y = 35;
+var a = 36;
+var angle = 0;
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+function drawCircle() {
+     ctx.clearRect(0, 0, 450, 450);
+    var grd = ctx.createRadialGradient(225,225,125,225,325,350);
+    grd.addColorStop(1,"blue");
+    grd.addColorStop(0,"#32cd32");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, 450, 450);
+    ctx.beginPath();
+    var radius = 25 + 150 * Math.abs(Math.cos(angle));
+    ctx.arc(225, 300, radius, Math.PI, Math.PI * 2, true);
+    ctx.closePath();
+     
+    angle += Math.PI / 64;
+    //Sunglasses
+     for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      ctx.save();
+         var img = document.getElementById("sunglasses");
+    ctx.drawImage(img, 90, 140, 250, 160);
+      ctx.translate(10 + j * 50, 10 + i * 50);
+      ctx.restore();
+    }
+  }
+    
+     //A
+ctx.moveTo(150 + x,150 + y);
+ctx.lineTo(175 + x,225 + y);
+ctx.stroke();
+ctx.moveTo(150 + x,150 + y);
+ctx.lineTo(125 + x,225 + y);
+ctx.stroke();
+ctx.moveTo(163.5 + x,190.5 + y);
+ctx.lineTo(137.5 + x,190.5 + y);
+ctx.stroke();
+//G
+ctx.moveTo(250 + a,225 + y);
+ctx.lineTo(200 + a,225 + y);
+ctx.stroke();
+ctx.moveTo(250 + a,150 + y);
+ctx.lineTo(200 + a,150 + y);
+ctx.stroke();
+ctx.moveTo(200 + a,150 + y);
+ctx.lineTo(200 + a,225 + y);
+ctx.stroke();
+ctx.moveTo(250 + a,190 + y);
+ctx.lineTo(250 + a,225 + y);
+ctx.stroke();
+ctx.moveTo(250 + a,190 + y);
+ctx.lineTo(225 + a,190 + y);
+ctx.stroke();
+
+    requestAnimationFrame(drawCircle);
+}
+drawCircle(); }
+
+;
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
