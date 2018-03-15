@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        	<style>
+    		*{
+    			padding:1;
+    		margin:1;
+    			
+    		}
+    		#myCanvas {  
+    			background-color:#39ff14;
+    			display:block;
+				margin:1;    		
+    			
+    		}
+    	</style>
+        <title> </title>
+    </head>
+    <body>
+ <center> <button type="button"><a href="clickergame.html">Start Screen</a></button>
+  <button type="button"><a href="clickergame1.html">Game</a></button><br>
+<canvas width="500" height="500" id="myCanvas"></canvas>
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+
+
+
+ctx.font = "30px Arial black ";
+ctx.textAlign="center";
+ctx.strokeText("Chase The Ball", 250, 100);
+ctx.font = "20px Arial black";
+ctx.textAlign="center";
+ctx.fillText("Click the ball to", 250, 200);
+ctx.fillText("get points.", 250, 250);
+canvas.addEventListener('click', () => {
+   console.log('canvas click');
+});
+
+   
+</script>
+    </body>
+</html>

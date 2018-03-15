@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            	*{
+    			padding:1;
+    		margin:1;
+    			
+    		}
+    		#myCanvas {  
+    			background-color:#39ff14;
+    			display:block;
+				margin:1; 
+    		}
+        </style>
+        <title> </title>
+    </head>
+    <body>
+ <center> <button type="button"><a href="clickergame.html">Start Screen</a></button>
+  <button type="button"><a href="clickergame1.html">Game</a></button>
+<br>
+<canvas onclick="myFunction(event)" width="500" height="500" id="myCanvas"></canvas>
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var score = 0;
+var lives = 4;
+var x = canvas.width/2;
+var y = canvas.height - 30;
+var dx = 14;
+var dy = -10;
+var ballRadius = 20;
+var randx=Math.random()*250;
+var randy=Math.random()*450;
+function drawScore() {
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.textAlign="center";
+    ctx.fillText("Score: "+score, 60, 40);
+}
+
+canvas.addEventListener('click', () => {
+   console.log('canvas click');
+});
+ 
+
+function drawlives(){    
+ ctx.font = "30px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.textAlign="center";
+    ctx.fillText("Lives: "+lives, 440, 40);
+}
+
+function drawBall(){
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+                ctx.fillStyle = "#FF6600";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+  function draw(){
+                
+                ctx.fillStyle = "#39ff14";
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+                drawScore();
+                drawlives();
+                drawBall();
+                ctx.fillRect(randx, randy, 50, 50);
+                x+=dx;
+                y+=dy;
+                if(x + dx > canvas.width - ballRadius || x + dx < ballRadius){
+	                dx = -dx;
+                }
+                if(y + dy > canvas.height - ballRadius || y + dy < ballRadius){
+                	dy = -dy;
+                } }
+                setInterval(draw, 10);
+                if (lives==0){
+                    alert("Game Over");
+                }
+               
+           ctx.fillRect(randx, randy, 50, 50);
+
+            function myFunction(event){
+                var xpos=event.clientX;
+                var ypos=event.clientY;
+                if (xpos<=randx && xpos>=randx+50 && ypos<=randy && ypos>=randy+50){
+                    ctx.clearRect(0, 0, 500, 500);
+                    score++;
+                    ctx.fillText("Score: "+score, 60, 40);
+                    ctx.fillText("Lives: "+lives, 440, 60);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                    ctx.fillRect(randx, randy, 50, 50);
+                    console.log("code works");
+                } else {
+                    ctx.clearRect(0, 0, 500, 500);
+                    lives--;
+                    ctx.fillText("Score: "+score, 430, 30);
+                    ctx.fillText("Lives: "+lives, 60, 30);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                    ctx.fillRect(randx, randy, 50, 50);
+                    if (lives==0){
+                        alert("Game Over");
+                        location.reload();
+                    }
+                }
+                if (score==15){
+                    alert("You Won!");
+                    location.reload();
+                }
+            }
+       
+</script>
+    </body>
+</html>
+
+ 
+            
