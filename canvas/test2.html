@@ -17,17 +17,9 @@
     	</style>
         <title> </title>
     </head>
-    <body><canvas width="480" height="320" id="myCanvas" ></canvas>
+    <body><canvas width="500" height="500" id="myCanvas" ></canvas>
 	<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var x = canvas.width/2;
-var y = canvas.height - 30;
-var dx = 2;
-var dy = -2;
-var ballRadius = 10;
-
-function drawBall(){
+    function drawBall(){
                 ctx.beginPath();
                 ctx.arc(x, y, ballRadius, 0, Math.PI*2);
                 ctx.fillStyle = "#FF6600";
@@ -36,13 +28,11 @@ function drawBall(){
             }
 
   function draw(){
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#000";
+                ctx.fillStyle = "#39ff14";
                 ctx.fillRect(0,0,canvas.width,canvas.height);
-            
+                drawScore();
+                drawlives();
                 drawBall();
-             
-             
                 x+=dx;
                 y+=dy;
                 if(x + dx > canvas.width - ballRadius || x + dx < ballRadius){
@@ -51,6 +41,6 @@ function drawBall(){
                 if(y + dy > canvas.height - ballRadius || y + dy < ballRadius){
                 	dy = -dy;
                 } }
-                setInterval(draw, 10);
+        
 </script>
 </html>
