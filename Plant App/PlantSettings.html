@@ -100,58 +100,104 @@ body, html {
 
 <!--survey-->
 <div style='padding-bottom: 20px; padding-left: 20px;'>
-    <h4>Temperature</h4>
-    <form action="" style = 'padding-left: 20px;'>
-      <input type="radio" name="temp" value="40"> Below 40 degrees<br>
-      <input type="radio" name="temp" value="40-70"> 40-70 degrees<br>
-      <input type="radio" name="temp" value="70-90"> 70-90 degrees<br>
-      <input type="radio" name="temp" value="90"> Above 90 degrees
-    </form>
+
+    <form method="post" action="survey.php">
   
-    <h4>Lighting</h4>
-    <form action="" style = 'padding-left: 20px;'>
-      <input type="radio" name="light" value="part"> Part Sun<br>
-      <input type="radio" name="light" value="full"> Full Sun<br>
-      <input type="radio" name="light" value="shade"> Shade
+    <fieldset>
+      <legend>Temperature</legend>
+      <div>
+        <input type="radio" name="temp" id="q1a" value="40">
+          <label for="q1a">Below 40 degrees Fahrenheit</label><br />
+        <input type="radio" name="temp" id="q1b" value="40-70">
+          <label for="q1b">40-70 degrees</label><br />
+        <input type="radio" name="temp" id="q1c"  value="70-90">
+          <label for="q1c">70-90 degrees</label><br />
+        <input type="radio" name="temp" id="q1d" value="90">
+          <label for="q1d">Above 90 degrees</label><br />
+      </div>
+    </fieldset>    
+    
+    <fieldset>
+      <legend>Lighting</legend>
+      <div>
+        <input type="radio" name="light" id="q2a" value="part">
+          <label for="q2a">Part Sun</label><br />
+        <input type="radio" name="light" id="q2b" value="full">
+          <label for="q2b">Full Sun</label><br />
+        <input type="radio" name="light" id="q2c"  value="shade">
+          <label for="q2c">Shade</label><br />
+      </div>
+    </fieldset>     
+
+    <fieldset>
+      <legend>Bloom Time</legend>
+      <div>
+        <input type="radio" name="bloom" id="q3a" value="spring">
+          <label for="q3a">Spring</label><br />
+        <input type="radio" name="bloom" id="q3b" value="summer">
+          <label for="q3b">Summer</label><br />
+        <input type="radio" name="bloom" id="q3c"  value="fall">
+          <label for="q3c">Fall</label><br />
+        <input type="radio" name="bloom" id="q3d" value="winter">
+          <label for="q3d">Winter</label><br />
+      </div>
+    </fieldset> 
+    
+    <fieldset>
+      <legend>Hardiness Zone</legend>
+      <div>
+        <input type="radio" name="zone" id="q4a" value="1">
+          <label for="q4a">1</label><br />
+        <input type="radio" name="zone" id="q4b" value="2">
+          <label for="q4b">2</label><br />
+        <input type="radio" name="zone" id="q4c"  value="3">
+          <label for="q4c">3</label><br />
+        <input type="radio" name="zone" id="q4d" value="4">
+          <label for="q4d">4</label><br />
+        <input type="radio" name="zone" id="q4e" value="5">
+          <label for="q4e">6</label><br />
+        <input type="radio" name="zone" id="q4f"  value="6">
+          <label for="q4f">7</label><br />
+        <input type="radio" name="zone" id="q4g" value="7">
+          <label for="q4g">8</label><br /> 
+        <input type="radio" name="zone" id="q4h" value="8">
+          <label for="q4h">9</label><br />
+        <input type="radio" name="zone" id="q4i" value="9">
+          <label for="q4i">10</label><br />
+        <input type="radio" name="zone" id="q4j"  value="10">
+          <label for="q4j">11</label><br />
+        <input type="radio" name="zone" id="q4k" value="11">
+          <label for="q4k">12</label><br />
+        <input type="radio" name="zone" id="q4el" value="12">
+          <label for="q4l">13</label><br />          
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Plant Type</legend>
+      <div>
+        <input type="radio" name="type" id="q5a" value="houseplant">
+          <label for="q5a">Houseplant</label><br />
+        <input type="radio" name="type" id="q5b" value="root">
+          <label for="q5b">Root</label><br />
+        <input type="radio" name="type" id="q5c"  value="vegetable">
+          <label for="q5c">Vegetable</label><br />
+        <input type="radio" name="type" id="q5d" value="fruit">
+          <label for="q5d">Fruit</label><br />
+        <input type="radio" name="type" id="q5e" value="flower">
+          <label for="q5e">Flower</label><br />          
+      </div>
+    </fieldset>    
+    
+    <fieldset>
+    <div>
+      <label for="submit">Submit the form</label>
+        <input type="submit" id="submit" name="submit" value="Send your Input" />
+    </div>
+    </fieldset>
     </form>
-  
-    
-    <h4>Bloom Time</h4>
-    <form action="" style = 'padding-left: 20px;'>
-      <input type="radio" name="bloom" value="spring"> Spring<br>
-      <input type="radio" name="bloom" value="summer"> Summer<br>
-      <input type="radio" name="bloom" value="fall"> Fall<br>
-      <input type="radio" name="bloom" value="winter"> Winter
-      </form>   
-    
-    <h4>Hardiness Zone</h4>
-    <form action="" style = 'padding-left: 20px;'>
-      <input type="radio" name="zone" value="1"> 1<br>
-      <input type="radio" name="zone" value="2"> 2<br>
-      <input type="radio" name="zone" value="3"> 3<br>
-      <input type="radio" name="zone" value="4"> 4<br>
-      <input type="radio" name="zone" value="5"> 5<br>
-      <input type="radio" name="zone" value="6"> 6<br>
-      <input type="radio" name="zone" value="7"> 7<br>
-      <input type="radio" name="zone" value="8"> 8<br>
-      <input type="radio" name="zone" value="9"> 9<br>
-      <input type="radio" name="zone" value="10"> 10<br>
-      <input type="radio" name="zone" value="11"> 11<br>
-      <input type="radio" name="zone" value="12"> 12<br>
-      <input type="radio" name="zone" value="13"> 13
-    </form>
-    
-    <h4>Plant Type</h4>
-    <form action="" style = 'padding-left: 20px;'>
-      <input type="radio" name="type" value="houseplant"> Houseplant<br>
-      <input type="radio" name="type" value="root"> Root<br>
-      <input type="radio" name="type" value="vegetable"> Vegetable<br>
-      <input type="radio" name="type" value="fruit"> Fruit<br>
-      <input type="radio" name="type" value="flower"> Flower<br>
-      <input type="radio" name="type" value="other"> Other
-    </form>     
-  <center><a href="selectedPlant.html" class="w3-button w3-green"><i class="material-icons">filter_vintage</i>    Enter Settings</a></center>
-</div>
+  </div>
+
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
 
