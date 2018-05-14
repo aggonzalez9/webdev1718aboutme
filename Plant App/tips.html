@@ -55,24 +55,18 @@ body, html {
     }
 }
 </style>
-<script>
-  $.ajax ({ url: "https://api.darksky.net/forecast/73a24d770a02e8453fd4ee42767eea2d/41.8781,87.6298", success: console.log("it worked")});
-  
-</script>
+
 <body>
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+    <a class="w3-bar-item w3-button w3-hover-white w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="homepage.html" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="tips.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> TIPS</a>
-    <a href="PlantSettings.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-leaf"></i> CHOOSE PLANT</a>
-    
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+    <a href="homepage.html" class="w3-bar-item w3-button" style="color:white">HOME</a>
+    <a href="tips.html" class="w3-bar-item w3-button w3-hide-small" style="color:white"><i class="fa fa-list"></i> TIPS</a>
+    <a href="selectPlant.html" class="w3-bar-item w3-button w3-hide-small" style="color:white"><i class="fa fa-leaf"></i> CHOOSE PLANT</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a>
@@ -80,10 +74,8 @@ body, html {
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TIPS</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">CHOOSE PLANT</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+    <a href="tips.html" class="w3-bar-item w3-button" onclick="toggleFunction()">TIPS</a>
+    <a href="selectPlant.html" class="w3-bar-item w3-button" onclick="toggleFunction()">CHOOSE PLANT</a>
     <a href="#" class="w3-bar-item w3-button">SEARCH</a>
   </div>
 </div>
@@ -126,7 +118,7 @@ body, html {
 <p>
   <center><h1> More Cool Plant Ideas</h1></center>
   <div class="container">
-  <h2>Carousel Example</h2>
+ 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -175,11 +167,93 @@ body, html {
     </a>
   </div>
 </div>
+ <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+  
+        height: 70%;
+        margin: 10;
+        padding: 5px;
+      }
+       .border1 { border-style: groove;
+          border-color: #00000; 
+           margin: 10px 5px 5px 10px; 
+            border-radius: 20px;}
+        
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      
+    </script>
+  </head>
+  <body>
+    <br>
+    <div><center><h4>Looking to buy or sell fresh plants? Find a farmers market near you!</h4><h3>Farmers Markets in Chicago</h3></center></div>
+  
+    <div class="border1" id="map"></div>
+    <div id="data">
+
+    </div>
+    
+    <script>
+      var map;
+      function initMap() 
+      {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(41.8781,-87.6298),
+          mapTypeId: 'terrain'
+        });
+        
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+            
+          });
+        }); 
+        
+     var markerCluster = new MarkerClusterer(map, markers,
+     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+     }        
+     var locations = [
+       
+      {lat: 41.928896 , lng: -87.70508}, 
+      {lat: 41.952929 , lng: -87.724765},
+      {lat: 41.968152, lng:  -87.684424},
+      {lat: 41.950962, lng:  -87.664931},
+      {lat: 41.964395, lng:  -87.659964},
+      {lat: 41.950503, lng:  -87.678657},
+      {lat: 41.902918, lng:  -87.69687},
+      {lat: 41.94155, lng:  -87.644582}
+      
+      
+      
+      
+      
+        
+      ]       
+      
+    
+
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZIMfRVApH7LSKKcbcfPP767LOSaMoqyg&callback=initMap">
+    </script>
+    
+    
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
 
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-  <p><a href="https://darksky.net/poweredby/">Powered By Dark Sky</a></p>
+
 </footer>
 
 </body>

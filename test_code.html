@@ -1,34 +1,64 @@
 <!DOCTYPE html>
-    <html>
-        <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-    $.ajax({
-    type: "POST",
-    dataType: 'text',
-    url: "https://api.darksky.net/forecast/73a24d770a02e8453fd4ee42767eea2d/41.8781,87.6298",
-    username: 'user',
-    password: 'pass',
-    crossDomain : true,
-    xhrFields: {
-        withCredentials: true
-    }
-})
-    .done(function( data ) {
-        console.log("done");
-    })
-    .fail( function(xhr, textStatus, errorThrown) {
-        alert(xhr.responseText);
-        alert(textStatus);
-    });
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+      
+        height: 70%;
+        margin: 10;
+        padding: 5px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      
+    </script>
+  </head>
+  <body>
+  
+    <div id="map"></div>
+    <div id="data">
 
-</script>
+    </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(41.8781,-87.6298),
+          mapTypeId: 'terrain'
+        });
+      }
+      
+ function getDetails(id) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        // submit a get request to the restful service mktDetail.
+        url: "https://polar-garden-75406.herokuapp.com/apiPassThru.php?apiEndpoint=https://api.darksky.net/forecast/73a24d770a02e8453fd4ee42767eea2d/41.8781,87.6298" + id,
+        dataType: 'jsonp',
+        jsonpCallback: 'detailResultHandler'
+    });
+}
+
+    
+//iterate through the JSON result object.
+function detailResultHandler(detailresults) {
+    for (var key in detailresults) {
+        alert(key);
+        var results = detailresults[key];
+        alert(results['GoogleLink']);
+        getDetails("id");
+    }
+}
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARMb63j3mHzCxvQfDRWmrtdj6OSe9uw1k&callback=initMap">
+    </script>
+    <button onclick="getDetails(id)">Click me</button>
+  </body>
 </html>
